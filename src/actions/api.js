@@ -28,8 +28,6 @@ export const fetchStockProfiles = stockName => (dispatch => {
     },
   }).then(response => {
     // Check if its one profile or several.
-    console.log('hello?');
-    console.log(response.data);
     if (response.data.length <= 1) {
       dispatch(showStock(response.data[0]));
     } else {
@@ -42,7 +40,7 @@ export const fetchStockProfiles = stockName => (dispatch => {
 });
 
 export const searchStocksAPI = (query, limit = 10) => (
-  () => {
+  dispatch => {
     axios({
       method: 'GET',
       url: `${REACT_APP_API_URL}/search`,
@@ -57,7 +55,7 @@ export const searchStocksAPI = (query, limit = 10) => (
       },
     }).then(response => {
       const stockSymbolsArray = response.data.map(stock => stock.symbol);
-      fetchStockProfiles(convertSymbolsArrayToString(stockSymbolsArray));
+      dispatch(fetchStockProfiles(convertSymbolsArrayToString(stockSymbolsArray)));
     }).catch(error => {
       console.log(`We got this error on search: ${error}`);
     });
