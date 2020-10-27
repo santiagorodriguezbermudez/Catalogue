@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Stock from '../components/Stock';
-import { searchStocksAPI } from '../actions/api';
+import { fetchMockStocks } from '../actions/api';
 
 const StockList = ({ stockList, getStocks }) => {
   const renderStocks = () => stockList.map(stock => (
@@ -35,7 +35,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => ({
   getStocks: (query, limit = 15) => {
-    dispatch(searchStocksAPI(query, limit));
+    dispatch(fetchMockStocks(query, limit));
   },
 });
 
