@@ -1,6 +1,3 @@
-// import axios from 'axios';
-// import { API_URL, API_KEY } from '../constants/constants';
-
 export const fetchStocks = stocks => ({
   type: 'FETCH_STOCKS',
   stocks,
