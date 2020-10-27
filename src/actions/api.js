@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
-  API_URL,
-  API_KEY,
+  REACT_APP_API_URL,
+  REACT_APP_API_KEY,
   mockStocks,
 } from '../constants/constants';
 import { fetchStocks, showStock } from './index';
@@ -15,39 +15,39 @@ const convertSymbolsArrayToString = symbolsArray => (
   symbolsArray.length === 0 ? '' : symbolsArray.reduce((stringSymbols, symbol) => `${stringSymbols},${symbol}`)
 );
 
-export const fetchStockProfiles = stockName => (
-  dispatch => {
-    axios({
-      method: 'GET',
-      url: `${API_URL}/profile/${stockName}`,
-      params: {
-        apikey: API_KEY,
-      },
-      header: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-    }).then(response => {
-      // Check if its one profile or several.
-      if (response.data.length <= 1) {
-        dispatch(showStock(response.data));
-      } else {
-        dispatch(fetchStocks(response.data));
-      }
-    }).catch(error => {
-      console.log(`We have an error when fetching profiles ${error}`);
-      dispatch(fetchStocks([]));
-    });
-  }
-);
+export const fetchStockProfiles = stockName => (dispatch => {
+  axios({
+    method: 'GET',
+    url: `${REACT_APP_API_URL}/profile/${stockName}`,
+    params: {
+      apikey: REACT_APP_API_KEY,
+    },
+    header: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }).then(response => {
+    // Check if its one profile or several.
+    console.log('hello?');
+    console.log(response.data);
+    if (response.data.length <= 1) {
+      dispatch(showStock(response.data[0]));
+    } else {
+      dispatch(fetchStocks(response.data));
+    }
+  }).catch(error => {
+    console.log(`We have an error when fetching profiles ${error}`);
+    dispatch(fetchStocks([]));
+  });
+});
 
 export const searchStocksAPI = (query, limit = 10) => (
   () => {
     axios({
       method: 'GET',
-      url: `${API_URL}/search`,
+      url: `${REACT_APP_API_URL}/search`,
       params: {
-        apikey: API_KEY,
+        apikey: REACT_APP_API_KEY,
         query: query || '',
         limit: limit.toString(),
       },
@@ -59,7 +59,7 @@ export const searchStocksAPI = (query, limit = 10) => (
       const stockSymbolsArray = response.data.map(stock => stock.symbol);
       fetchStockProfiles(convertSymbolsArrayToString(stockSymbolsArray));
     }).catch(error => {
-      console.log(`We got this error on search: ${error}`)
+      console.log(`We got this error on search: ${error}`);
     });
   }
 );
