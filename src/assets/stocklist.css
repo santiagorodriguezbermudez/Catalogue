@@ -1,0 +1,14 @@
+.stock-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  padding: 2rem 0.5rem;
+}
+
+@media (min-width: 720px) {
+  .stock-container {
+    flex-direction: row;
+  }
+}

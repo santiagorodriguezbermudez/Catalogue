@@ -1,32 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import '../assets/stockindex.css';
+
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+});
 
 const Stock = ({ stock }) => (
-  <div className="lg:w-1/4 w-full">
-    <Link to={`/stocks/${stock.symbol}`}>
-      <br />
-      symbol:
-      {stock.symbol}
-      price:
-      {stock.price}
-      companyName:
-      {stock.companyName}
-      currency:
-      {stock.currency}
-      sector:
-      {stock.sector}
-      industry:
-      {stock.industry}
-      exchange:
-      {stock.exchange}
-      website:
-      {stock.website}
-      <br />
-      <span>
-        More information
-      </span>
-    </Link>
+  <div
+    className="stock-index-card"
+  >
+    <div className="relative">
+      <img
+        src={stock.image}
+        alt="company"
+        className="w-full"
+      />
+      <span className="absolute bottom-0 right-0">{stock.symbol}</span>
+    </div>
+    <div className="p-2">
+      <p className="text-2xl">
+        Company Name:
+        {stock.companyName}
+      </p>
+      <p className="text-xl">
+        Price:
+        {formatter.format(stock.price)}
+      </p>
+      <p>
+        Exchange:
+        {stock.exchange}
+      </p>
+      <Link to={`/stocks/${stock.symbol}`}>More Information</Link>
+    </div>
   </div>
 );
 
@@ -34,10 +43,7 @@ const stockItemShape = {
   symbol: PropTypes.string,
   price: PropTypes.number,
   companyName: PropTypes.string,
-  currency: PropTypes.string,
-  sector: PropTypes.string,
   website: PropTypes.string,
-  industry: PropTypes.string,
   exchange: PropTypes.string,
 };
 

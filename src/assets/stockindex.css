@@ -1,0 +1,48 @@
+.stock-index-card {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  width: 100%;
+  background-color: #20202a;
+  color: white;
+  margin: 2rem 0;
+  text-align: center;
+  padding: 0.1rem;
+}
+
+.stock-index-card:hover {
+  box-shadow: 0 25px 100px -12px rgba(0, 0, 0, 0.25);
+}
+
+.stock-index-card img {
+  margin-bottom: 1rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.stock-index-card p {
+  margin-bottom: 1rem;
+  border-bottom: 0.1px solid white;
+}
+
+.stock-index-card a {
+  display: block;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 100%;
+  background-color: #20202a;
+  color: white;
+  padding: 1rem;
+}
+
+.stock-index-card a:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  color: #20202a;
+}
+
+@media (min-width: 720px) {
+  .stock-index-card {
+    width: 30%;
+    margin: 0;
+  }
+}

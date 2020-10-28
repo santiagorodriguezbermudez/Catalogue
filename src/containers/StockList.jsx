@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Stock from '../components/Stock';
 import { fetchMockStocks } from '../actions/api';
+import '../assets/stocklist.css';
 
 const StockList = ({ stockList, getStocks }) => {
   const renderStocks = () => stockList.map(stock => (
@@ -15,7 +16,7 @@ const StockList = ({ stockList, getStocks }) => {
 
   return (
     <div>
-      <div className="lg:flex-row flex bg-gray-200 flex-col py-12 px-1 justify-between items-center flex-wrap">
+      <div className="stock-container">
         {renderStocks()}
       </div>
     </div>
