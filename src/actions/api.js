@@ -4,11 +4,12 @@ import {
   REACT_APP_API_KEY,
   mockStocks,
 } from '../constants/constants';
-import { fetchStocks, showStock } from './index';
+import { fetchStocks, showStock, filter } from './index';
 
 // Mock API for not triggering API testing calls
 export const fetchMockStocks = () => dispatch => {
   dispatch(fetchStocks(mockStocks));
+  dispatch(filter(mockStocks));
 };
 
 const convertSymbolsArrayToString = symbolsArray => (
@@ -32,6 +33,7 @@ export const fetchStockProfiles = stockName => (dispatch => {
       dispatch(showStock(response.data[0]));
     } else {
       dispatch(fetchStocks(response.data));
+      dispatch(filter(response.data));
     }
   }).catch(error => {
     console.log(`We have an error when fetching profiles ${error}`);

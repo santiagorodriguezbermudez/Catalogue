@@ -3,9 +3,9 @@ export const fetchStocks = stocks => ({
   stocks,
 });
 
-export const filter = label => ({
+export const filter = stocks => ({
   type: 'CHANGE_FILTER',
-  label,
+  stocks,
 });
 
 export const showStock = stock => ({

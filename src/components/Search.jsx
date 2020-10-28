@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
+import { searchStocksAPI } from '../actions/api';
 
-const Search = ({ stocks }) => {
+const Search = ({ stocks, searchStocks }) => {
   // Create a state for the user input
   const [suggestions, setSuggestions] = React.useState([]);
   const [value, setNewValue] = React.useState('');
@@ -37,11 +38,28 @@ const Search = ({ stocks }) => {
     setNewValue(newValue);
   };
 
+  // Specify what to do when the user hits enter for submitting the query
+  const onKeyDown = event => {
+    switch (event.keyCode) {
+      case 13:
+        if (value.length > 0) {
+          searchStocks(value);
+        }
+        setNewValue('');
+        break;
+      case 27:
+        setNewValue('');
+        break;
+      default:
+    }
+  };
+
   // Configure the search auto suggest component
   const inputProps = {
     placeholder: 'Type the name of the company stock',
     value,
     onChange,
+    onKeyDown,
   };
 
   return (
@@ -58,6 +76,7 @@ const Search = ({ stocks }) => {
 
 Search.propTypes = {
   stocks: PropTypes.arrayOf(PropTypes.object).isRequired,
+  searchStocks: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (
@@ -66,12 +85,12 @@ const mapStateToProps = state => (
   }
 );
 
-// const mapDispatchToProps = dispatch => ({
-//   getStocks: (query, limit = 15) => {
-//     dispatch(fetchMockStocks(query, limit));
-//   },
-// });
+const mapDispatchToProps = dispatch => ({
+  searchStocks: (query, limit = 15) => {
+    dispatch(searchStocksAPI(query, limit));
+  },
+});
 
-const connectedSearch = connect(mapStateToProps)(Search);
+const connectedSearch = connect(mapStateToProps, mapDispatchToProps)(Search);
 
 export default connectedSearch;

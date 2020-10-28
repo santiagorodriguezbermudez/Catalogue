@@ -29,7 +29,7 @@ StockList.propTypes = {
 
 const mapStateToProps = state => (
   {
-    stockList: state.stocks,
+    stockList: state.filter,
   }
 );
 
