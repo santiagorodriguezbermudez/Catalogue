@@ -4,13 +4,19 @@
   width: 100%;
   background-color: #20202a;
   color: white;
-  margin: 2rem 0;
+  margin: 1rem 0;
   text-align: center;
   padding: 0.1rem;
 }
 
 .stock-index-card:hover {
   box-shadow: 0 25px 100px -12px rgba(0, 0, 0, 0.25);
+}
+
+.stock-index-card span {
+  background-color: lightslategrey;
+  color: white;
+  padding: 0.5rem;
 }
 
 .stock-index-card img {
@@ -43,6 +49,6 @@
 @media (min-width: 720px) {
   .stock-index-card {
     width: 30%;
-    margin: 0;
+    margin: 1rem;
   }
 }
