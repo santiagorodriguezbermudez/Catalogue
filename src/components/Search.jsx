@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 import { connect } from 'react-redux';
 import { searchStocksAPI } from '../actions/api';
+import '../assets/search.css';
 
 const Search = ({ stocks, searchStocks }) => {
   // Create a state for the user input

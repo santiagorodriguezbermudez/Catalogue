@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Stock = ({ stock }) => (
-  <div>
+  <div className="lg:w-1/4 w-full">
     <Link to={`/stocks/${stock.symbol}`}>
       <br />
       symbol:

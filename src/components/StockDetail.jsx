@@ -9,7 +9,7 @@ const StockDetail = ({ stock, fetchStock }) => {
 
   React.useEffect(() => {
     fetchStock(stockName);
-  }, []);
+  }, [stock]);
 
   const renderStockDetails = stock => {
     const stockObjectArray = Object.entries(stock);

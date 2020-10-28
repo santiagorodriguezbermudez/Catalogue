@@ -15,7 +15,7 @@ const StockList = ({ stockList, getStocks }) => {
 
   return (
     <div>
-      <div>
+      <div className="lg:flex-row flex bg-gray-200 flex-col py-12 px-1 justify-between items-center flex-wrap">
         {renderStocks()}
       </div>
     </div>

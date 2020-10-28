@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import App from './components/App';
 import combinedReducers from './reducers/index';
+import './index.css';
 
 require('dotenv').config();
 
