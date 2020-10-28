@@ -1,26 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Stock = ({ stock }) => (
   <div>
-    <br />
-    symbol:
-    {stock.symbol}
-    price:
-    {stock.price}
-    companyName:
-    {stock.companyName}
-    currency:
-    {stock.currency}
-    sector:
-    {stock.sector}
-    industry:
-    {stock.industry}
-    exchange:
-    {stock.exchange}
-    website:
-    {stock.website}
-    <br />
+    <Link to={`/stocks/${stock.symbol}`}>
+      <br />
+      symbol:
+      {stock.symbol}
+      price:
+      {stock.price}
+      companyName:
+      {stock.companyName}
+      currency:
+      {stock.currency}
+      sector:
+      {stock.sector}
+      industry:
+      {stock.industry}
+      exchange:
+      {stock.exchange}
+      website:
+      {stock.website}
+      <br />
+      <span>
+        More information
+      </span>
+    </Link>
   </div>
 );
 
