@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchStockProfiles } from '../actions/api';
+import Chart from '../containers/Chart';
 
 const StockDetail = ({ stock, fetchStock }) => {
   const { stockName } = useParams();
@@ -31,6 +32,7 @@ const StockDetail = ({ stock, fetchStock }) => {
 
   return (
     <div>
+      <Chart />
       <ul>
         {renderStockDetails(stock)}
       </ul>
