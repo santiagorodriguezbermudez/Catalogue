@@ -3,11 +3,17 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchStockProfiles, fetchStockHistory } from '../actions/api';
-import Chart from '../containers/Chart/Chart';
+import Chart from './Chart';
 import '../assets/styles/stockdetail.css';
 import { formatter } from '../constants/constants';
+import Loading from './Loading';
 
-const StockDetail = ({ stock, fetchStock, fetchStockPrice }) => {
+const StockDetail = ({
+  stock,
+  fetchStock,
+  fetchStockPrice,
+  application,
+}) => {
   const { stockName } = useParams();
 
   React.useEffect(() => {
@@ -15,7 +21,7 @@ const StockDetail = ({ stock, fetchStock, fetchStockPrice }) => {
     fetchStockPrice(stockName);
   }, []);
 
-  return (
+  const renderStockDetail = () => (
     <div>
       <Chart history={stock.history} />
       <section className="stock-general">
@@ -46,6 +52,12 @@ const StockDetail = ({ stock, fetchStock, fetchStockPrice }) => {
       </section>
     </div>
   );
+
+  return (
+    <div>
+      {application === 'LOADING' ? <Loading /> : renderStockDetail()}
+    </div>
+  );
 };
 
 const stockItemShape = {
@@ -63,11 +75,13 @@ StockDetail.propTypes = {
   stock: PropTypes.shape(stockItemShape).isRequired,
   fetchStock: PropTypes.func.isRequired,
   fetchStockPrice: PropTypes.func.isRequired,
+  application: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => (
   {
     stock: state.stock,
+    application: state.application,
   }
 );
 

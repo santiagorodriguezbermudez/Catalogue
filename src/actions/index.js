@@ -17,3 +17,8 @@ export const addPriceStock = history => ({
   type: 'ADD_PRICE_TO_STOCK',
   history,
 });
+
+export const updateState = newState => ({
+  type: 'UPDATE_STATE',
+  newState,
+});

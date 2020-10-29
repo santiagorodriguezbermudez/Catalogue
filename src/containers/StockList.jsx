@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import Stock from '../components/Stock';
 import { searchStocksAPI } from '../actions/api';
 import '../assets/styles/stocklist.css';
+import Loading from '../components/Loading';
 
-const StockList = ({ stockList, getStocks }) => {
+const StockList = ({ stockList, getStocks, application }) => {
   const renderStocks = () => stockList.map(stock => (
     <Stock key={stock.symbol} stock={stock} />
   ));
@@ -17,7 +18,7 @@ const StockList = ({ stockList, getStocks }) => {
   return (
     <div>
       <div className="stock-container">
-        {renderStocks()}
+        {application === 'LOADING' ? <Loading /> : renderStocks()}
       </div>
     </div>
   );
@@ -26,11 +27,13 @@ const StockList = ({ stockList, getStocks }) => {
 StockList.propTypes = {
   stockList: PropTypes.arrayOf(PropTypes.object).isRequired,
   getStocks: PropTypes.func.isRequired,
+  application: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => (
   {
     stockList: state.filter,
+    application: state.application,
   }
 );
 
