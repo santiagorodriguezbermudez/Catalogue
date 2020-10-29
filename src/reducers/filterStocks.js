@@ -1,6 +1,6 @@
-const filter = (state = [], action) => {
+const filterStocks = (state = [], action) => {
   switch (action.type) {
-    case 'CHANGE_FILTER':
+    case 'FILTER_STOCKS':
       return action.stocks.map(stock => ({
         symbol: stock.symbol,
         price: stock.price,
@@ -14,4 +14,4 @@ const filter = (state = [], action) => {
   }
 };
 
-export default filter;
+export default filterStocks;

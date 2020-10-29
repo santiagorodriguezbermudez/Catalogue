@@ -3,8 +3,8 @@ export const fetchStocks = stocks => ({
   stocks,
 });
 
-export const filter = stocks => ({
-  type: 'CHANGE_FILTER',
+export const filterStocks = stocks => ({
+  type: 'FILTER_STOCKS',
   stocks,
 });
 
