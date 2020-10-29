@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CanvasJSReact from './canvasjs.react';
+import CanvasJSReact from '../assets/js/canvasjs.react';
 
 const Chart = ({ history }) => {
   const { CanvasJSChart } = CanvasJSReact;
