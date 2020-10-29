@@ -4,21 +4,17 @@ import CanvasJSReact from './canvasjs.react';
 
 const Chart = ({ history }) => {
   const { CanvasJSChart } = CanvasJSReact;
-  let mapPricePoints = [];
 
-  if (history !== undefined) {
-    mapPricePoints = history.map(price => {
-      const priceData = {
-        x: new Date(price.date),
-        y: price.close,
-      };
-      return priceData;
-    });
-  }
+  const mapPricePoints = history.map(price => {
+    const priceData = {
+      x: new Date(price.date),
+      y: price.close,
+    };
+    return priceData;
+  });
 
   const options = {
     animationEnabled: true,
-    animationDuration: 5000,
     theme: 'light1',
     title: {
       text: 'Close Historic Price',
@@ -39,6 +35,7 @@ const Chart = ({ history }) => {
         yValueFormatString: '#,##.##',
         showInLegend: true,
         dataPoints: mapPricePoints,
+        name: 'Daily Close Price',
       },
     ],
   };
@@ -51,8 +48,12 @@ const Chart = ({ history }) => {
   );
 };
 
+Chart.defaultProps = {
+  history: [],
+};
+
 Chart.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Chart;

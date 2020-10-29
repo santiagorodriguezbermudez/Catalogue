@@ -6,9 +6,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: .5rem 3rem;
+  padding: .5rem;
   color: white;
   background-color: #20202a;
   box-shadow: 0 10px 15px -3px rgb(248, 248, 248), 0 4px 6px -2px rgb(248, 248, 248);
+}
+
+@media (min-width: 1000px) {
+  .navbar {
+    padding: 1rem 3rem;
+  }
 }
 
