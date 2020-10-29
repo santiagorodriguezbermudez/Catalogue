@@ -3,8 +3,8 @@ export const fetchStocks = stocks => ({
   stocks,
 });
 
-export const filterStocks = stocks => ({
-  type: 'FILTER_STOCKS',
+export const searchedStocks = stocks => ({
+  type: 'SEARCHED_STOCKS',
   stocks,
 });
 
@@ -21,4 +21,9 @@ export const addPriceStock = history => ({
 export const updateState = newState => ({
   type: 'UPDATE_STATE',
   newState,
+});
+
+export const filter = label => ({
+  type: 'FILTER',
+  label,
 });

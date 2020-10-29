@@ -5,8 +5,9 @@ import Stock from '../components/Stock';
 import { searchStocksAPI } from '../actions/api';
 import '../assets/styles/stocklist.css';
 import Loading from '../components/Loading';
-// import Filter from '../components/Filter';
-// import { optionsFilter } from '../constants/constants';
+import Filter from '../components/Filter';
+import { filter } from '../actions/index';
+import filterStocksByExchange from '../filters/filterStocksByExchange';
 
 const StockList = ({ stockList, getStocks, application }) => {
   const renderStocks = () => stockList.map(stock => (
@@ -17,6 +18,10 @@ const StockList = ({ stockList, getStocks, application }) => {
     getStocks('');
   }, []);
 
+  const onChangeFilter = event => {
+    filter(event.target.value);
+  };
+
   const filterOptions = stockList => {
     const countObject = {};
     stockList.forEach(stock => {
@@ -26,11 +31,9 @@ const StockList = ({ stockList, getStocks, application }) => {
     return countObject;
   };
 
-  console.log(filterOptions(stockList));
-
   return (
     <div>
-      {/* <Filter /> */}
+      <Filter filterOptions={filterOptions} onChange={onChangeFilter} />
       <div className="stock-container">
         {application === 'LOADING' ? <Loading /> : renderStocks()}
       </div>
@@ -46,7 +49,7 @@ StockList.propTypes = {
 
 const mapStateToProps = state => (
   {
-    stockList: state.filterStocks,
+    stockList: filterStocksByExchange(state.searchedStocks, state.filter),
     application: state.application,
   }
 );

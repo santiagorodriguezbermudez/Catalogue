@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import filterStocks from './filterStocks';
+import filter from './filter';
+import searchedStocks from './searchedStocks';
 import stocks from './stocks';
 import stock from './stock';
 import application from './application';
 
 const combinedReducers = combineReducers({
+  filter,
   application,
-  filterStocks,
+  searchedStocks,
   stocks,
   stock,
 });
