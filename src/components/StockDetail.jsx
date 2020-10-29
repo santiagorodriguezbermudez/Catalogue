@@ -2,21 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchStockProfiles } from '../actions/api';
-import Chart from '../containers/Chart';
-import '../assets/stockdetail.css';
+import { fetchStockProfiles, fetchStockHistory } from '../actions/api';
+import Chart from '../containers/Chart/Chart';
+import '../assets/styles/stockdetail.css';
 import { formatter } from '../constants/constants';
 
-const StockDetail = ({ stock, fetchStock }) => {
+const StockDetail = ({ stock, fetchStock, fetchStockPrice }) => {
   const { stockName } = useParams();
 
   React.useEffect(() => {
     fetchStock(stockName);
+    fetchStockPrice(stockName);
   }, []);
 
   return (
     <div>
-      <Chart />
+      <Chart history={stock.history} />
       <section className="stock-general">
         <div className="stock-info">
           <ul>
@@ -61,6 +62,7 @@ const stockItemShape = {
 StockDetail.propTypes = {
   stock: PropTypes.shape(stockItemShape).isRequired,
   fetchStock: PropTypes.func.isRequired,
+  fetchStockPrice: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (
@@ -72,6 +74,9 @@ const mapStateToProps = state => (
 const mapDispatchToProps = dispatch => ({
   fetchStock: symbol => {
     dispatch(fetchStockProfiles(symbol));
+  },
+  fetchStockPrice: symbol => {
+    dispatch(fetchStockHistory(symbol));
   },
 });
 

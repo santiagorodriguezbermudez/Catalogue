@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import '../assets/stockindex.css';
+import '../assets/styles/stockindex.css';
 import errorImage from '../assets/images/error.jpg';
 import { formatter } from '../constants/constants';
 

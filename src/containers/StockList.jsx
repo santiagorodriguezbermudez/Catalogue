@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Stock from '../components/Stock';
 import { searchStocksAPI } from '../actions/api';
-import '../assets/stocklist.css';
+import '../assets/styles/stocklist.css';
 
 const StockList = ({ stockList, getStocks }) => {
   const renderStocks = () => stockList.map(stock => (
