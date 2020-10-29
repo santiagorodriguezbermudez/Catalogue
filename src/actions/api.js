@@ -29,6 +29,7 @@ export const fetchStockProfiles = stockName => (dispatch => {
     },
   }).then(response => {
     // Check if its one profile or several.
+    console.log(response.data);
     if (response.data.length <= 1) {
       dispatch(showStock(response.data[0]));
     } else {

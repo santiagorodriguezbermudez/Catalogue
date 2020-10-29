@@ -4,38 +4,45 @@ import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchStockProfiles } from '../actions/api';
 import Chart from '../containers/Chart';
+import '../assets/stockdetail.css';
+import { formatter } from '../constants/constants';
 
 const StockDetail = ({ stock, fetchStock }) => {
   const { stockName } = useParams();
 
   React.useEffect(() => {
     fetchStock(stockName);
-  }, [stock]);
-
-  const renderStockDetails = stock => {
-    const stockObjectArray = Object.entries(stock);
-    return (
-      stockObjectArray.map(stockAttributes => {
-        const attributeName = stockAttributes[0];
-        const attributeValue = stockAttributes[1];
-
-        return (
-          <li key={attributeName}>
-            {attributeName}
-            {': '}
-            {attributeValue}
-          </li>
-        );
-      })
-    );
-  };
+  }, []);
 
   return (
     <div>
       <Chart />
-      <ul>
-        {renderStockDetails(stock)}
-      </ul>
+      <section className="stock-general">
+        <div className="stock-info">
+          <ul>
+            <li>{`Symbol: ${stock.symbol}`}</li>
+            <li>{`Price: ${formatter.format(stock.price)}`}</li>
+            <li>{`Market Cap: ${formatter.format(stock.mktCap)}`}</li>
+            <li>{`Currency: ${stock.currency}`}</li>
+            <li>{`Exchange: ${stock.exchange}`}</li>
+          </ul>
+        </div>
+        <div className="stock-description">
+          <p>{`CEO: ${stock.ceo}`}</p>
+          <p>{`Description: ${stock.description}`}</p>
+          <p>{`Sector: ${stock.sector}`}</p>
+          <p>{`Industry: ${stock.industry}`}</p>
+        </div>
+        <div className="stock-contact-info">
+          <ul>
+            <li>{`Contact Phone: ${stock.phone}`}</li>
+            <li>{`Address: ${stock.address}`}</li>
+            <li>{`Country: ${stock.country}`}</li>
+            <li>{`State: ${stock.state}`}</li>
+            <li>{`City: ${stock.city}`}</li>
+          </ul>
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,0 +1,33 @@
+.stock-general {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #20202a;
+  color: white;
+}
+
+.stock-general div {
+  width: 100%;
+  box-shadow: 0 10px 15px -3px rgb(248, 248, 248), 0 4px 6px -2px rgb(248, 248, 248);
+  border-radius: 14px;
+  margin: 1rem;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.stock-description {
+  flex-grow: 2;
+}
+
+@media (min-width: 1000px) {
+  .stock-general {
+    flex-direction: row;
+  }
+
+  .stock-general div {
+    width: 30%;
+  }
+}

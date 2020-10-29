@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../assets/stockindex.css';
 import errorImage from '../assets/images/error.jpg';
-
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-  minimumFractionDigits: 2,
-});
+import { formatter } from '../constants/constants';
 
 const Stock = ({ stock }) => (
   <div
