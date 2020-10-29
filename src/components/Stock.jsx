@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import '../assets/stockindex.css';
+import errorImage from '../assets/images/error.jpg';
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -18,6 +19,10 @@ const Stock = ({ stock }) => (
         src={stock.image}
         alt="company"
         className="w-full"
+        onError={e => {
+          e.target.onerror = null;
+          e.target.src = errorImage;
+        }}
       />
       <span className="absolute bottom-0 right-0">{stock.symbol}</span>
     </div>
