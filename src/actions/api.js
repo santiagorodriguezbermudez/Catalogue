@@ -6,7 +6,7 @@ import {
 import {
   fetchStocks,
   showStock,
-  filterStocks,
+  searchedStocks,
   addPriceStock,
   updateState,
 } from './index';
@@ -34,7 +34,7 @@ export const fetchStockProfiles = stockName => (dispatch => {
       dispatch(updateState('IDLE'));
     } else {
       dispatch(fetchStocks(response.data));
-      dispatch(filterStocks(response.data));
+      dispatch(searchedStocks(response.data));
       dispatch(updateState('IDLE'));
     }
   }).catch(error => {

@@ -1,6 +1,6 @@
-const filterStocks = (state = [], action) => {
+const searchedStocks = (state = [], action) => {
   switch (action.type) {
-    case 'FILTER_STOCKS':
+    case 'SEARCHED_STOCKS':
       return action.stocks.map(stock => ({
         symbol: stock.symbol,
         price: stock.price,
@@ -14,4 +14,4 @@ const filterStocks = (state = [], action) => {
   }
 };
 
-export default filterStocks;
+export default searchedStocks;
