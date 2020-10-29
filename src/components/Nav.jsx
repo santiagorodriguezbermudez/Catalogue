@@ -7,7 +7,7 @@ const Nav = () => (
     <Link to="/">
       Catalogue of Stocks
     </Link>
-    <Link className="flex items-center" to="/">
+    <Link className="flex items-center" to="/search">
       <span className="material-icons">
         search
       </span>

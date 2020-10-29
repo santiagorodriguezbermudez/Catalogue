@@ -15,12 +15,15 @@ const App = () => (
       <Switch>
         <Route exact path="/">
           <Nav />
-          <Search />
           <StockList />
         </Route>
         <Route path="/stocks/:stockName">
           <Nav />
           <StockDetail />
+        </Route>
+        <Route path="/search">
+          <Search />
+          <StockList />
         </Route>
         <Route>
           <span>User not found</span>
