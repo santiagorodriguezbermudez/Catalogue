@@ -4,7 +4,12 @@ import {
   REACT_APP_API_KEY,
   mockStocks,
 } from '../constants/constants';
-import { fetchStocks, showStock, filter } from './index';
+import {
+  fetchStocks,
+  showStock,
+  filter,
+  addPriceStock,
+} from './index';
 
 // Mock API for not triggering API testing calls
 export const fetchMockStocks = () => dispatch => {
@@ -29,7 +34,6 @@ export const fetchStockProfiles = stockName => (dispatch => {
     },
   }).then(response => {
     // Check if its one profile or several.
-    console.log(response.data);
     if (response.data.length <= 1) {
       dispatch(showStock(response.data[0]));
     } else {
@@ -64,3 +68,22 @@ export const searchStocksAPI = (query, limit = 10) => (
     });
   }
 );
+
+export const fetchStockHistory = stockName => (dispatch => {
+  axios({
+    method: 'GET',
+    url: `${REACT_APP_API_URL}/historical-price-full/${stockName}/?serietype=line`,
+    params: {
+      apikey: REACT_APP_API_KEY,
+    },
+    header: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }).then(response => {
+    dispatch(addPriceStock(response.data.historical));
+  }).catch(error => {
+    console.log(`We have an error fetching the stock profile ${error}`);
+    dispatch(addPriceStock([]));
+  });
+});

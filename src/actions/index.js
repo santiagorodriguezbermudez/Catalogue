@@ -12,3 +12,8 @@ export const showStock = stock => ({
   type: 'SHOW_STOCK',
   stock,
 });
+
+export const addPriceStock = history => ({
+  type: 'ADD_PRICE_TO_STOCK',
+  history,
+});
