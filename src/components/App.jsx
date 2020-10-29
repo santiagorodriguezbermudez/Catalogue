@@ -7,16 +7,19 @@ import {
 import Search from './Search';
 import StockDetail from './StockDetail';
 import StockList from '../containers/StockList';
+import Nav from './Nav';
 
 const App = () => (
   <Router>
     <div>
       <Switch>
         <Route exact path="/">
+          <Nav />
           <Search />
           <StockList />
         </Route>
         <Route path="/stocks/:stockName">
+          <Nav />
           <StockDetail />
         </Route>
         <Route>
