@@ -1,7 +1,7 @@
 .stock-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: flex-end;
   background-color: white;
   padding: 2rem 0.5rem;
