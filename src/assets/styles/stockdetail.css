@@ -5,13 +5,13 @@
   width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #20202a;
-  color: white;
 }
 
 .stock-general div {
+  color: white;
+  background-color: #20202a;
   width: 100%;
-  box-shadow: 0 10px 15px -3px rgb(248, 248, 248), 0 4px 6px -2px rgb(248, 248, 248);
+  box-shadow: 0 10px 15px -3px #20202a, 0 4px 6px -2px #20202a;
   border-radius: 14px;
   margin: 1rem 0;
   padding: 0.5rem;
@@ -29,5 +29,6 @@
 
   .stock-general div {
     width: 30%;
+    margin: 1rem;
   }
 }

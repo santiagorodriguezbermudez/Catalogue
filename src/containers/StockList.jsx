@@ -38,7 +38,7 @@ const mapStateToProps = state => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  getStocks: (query, limit = 15) => {
+  getStocks: (query, limit = 300) => {
     dispatch(searchStocksAPI(query, limit));
   },
 });
