@@ -9,7 +9,12 @@ import Filter from '../components/Filter';
 import { filter } from '../actions/index';
 import filterStocksByExchange from '../filters/filterStocksByExchange';
 
-const StockList = ({ stockList, getStocks, application }) => {
+const StockList = ({
+  stockList,
+  getStocks,
+  application,
+  setFilter,
+}) => {
   const renderStocks = () => stockList.map(stock => (
     <Stock key={stock.symbol} stock={stock} />
   ));
@@ -19,13 +24,13 @@ const StockList = ({ stockList, getStocks, application }) => {
   }, []);
 
   const onChangeFilter = event => {
-    filter(event.target.value);
+    setFilter(event.target.value.trim());
   };
 
   const filterOptions = stockList => {
     const countObject = {};
     stockList.forEach(stock => {
-      const key = JSON.stringify(stock.exchange);
+      const key = stock.exchange;
       countObject[key] = (countObject[key] || 0) + 1;
     });
     return countObject;
@@ -33,7 +38,7 @@ const StockList = ({ stockList, getStocks, application }) => {
 
   return (
     <div>
-      <Filter filterOptions={filterOptions} onChange={onChangeFilter} />
+      <Filter filterOptions={filterOptions(stockList)} onChange={onChangeFilter} />
       <div className="stock-container">
         {application === 'LOADING' ? <Loading /> : renderStocks()}
       </div>
@@ -45,6 +50,7 @@ StockList.propTypes = {
   stockList: PropTypes.arrayOf(PropTypes.object).isRequired,
   getStocks: PropTypes.func.isRequired,
   application: PropTypes.string.isRequired,
+  setFilter: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (
@@ -57,6 +63,9 @@ const mapStateToProps = state => (
 const mapDispatchToProps = dispatch => ({
   getStocks: (query, limit = 1000) => {
     dispatch(searchStocksAPI(query, limit));
+  },
+  setFilter: label => {
+    dispatch(filter(label));
   },
 });
 

@@ -1,7 +1,7 @@
-const filter = (state = 'All', action) => {
+const filter = (state = 'ALL', action) => {
   switch (action.type) {
     case 'FILTER':
-      return action.filter;
+      return action.label;
     default:
       return state;
   }

@@ -10,7 +10,7 @@ const renderFilterOptions = options => Object.keys(options).map(optionName => (
 
 const Filter = ({ onChange, filterOptions }) => (
   <select className="filter-by-exchange" onChange={onChange}>
-    <option key="All-key">
+    <option key="All-key" value="ALL">
       All
     </option>
     { renderFilterOptions(filterOptions) }
@@ -19,7 +19,7 @@ const Filter = ({ onChange, filterOptions }) => (
 
 Filter.propTypes = {
   onChange: PropTypes.func.isRequired,
-  filterOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  filterOptions: PropTypes.objectOf(PropTypes.number).isRequired,
 };
 
 export default Filter;
