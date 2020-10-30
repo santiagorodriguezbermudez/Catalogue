@@ -38,8 +38,7 @@ export const fetchStockProfiles = stockName => (dispatch => {
       dispatch(searchedStocks(response.data));
       dispatch(updateState('IDLE'));
     }
-  }).catch(error => {
-    console.log(`We have an error when fetching profiles ${error}`);
+  }).catch(() => {
     dispatch(fetchStocks([]));
   });
 });
@@ -63,8 +62,8 @@ export const searchStocksAPI = (query, limit = 10) => dispatch => {
     dispatch(filter('ALL'));
     dispatch(fetchStockProfiles(convertSymbolsArrayToString(stockSymbolsArray)));
     dispatch(updateState('IDLE'));
-  }).catch(error => {
-    console.log(`We got this error on search: ${error}`);
+  }).catch(() => {
+    dispatch(fetchStocks([]));
   });
 };
 
@@ -83,8 +82,7 @@ export const fetchStockHistory = stockName => (dispatch => {
   }).then(response => {
     dispatch(addPriceStock(response.data.historical));
     dispatch(updateState('IDLE'));
-  }).catch(error => {
-    console.log(`We have an error fetching the stock profile ${error}`);
+  }).catch(() => {
     dispatch(addPriceStock([]));
   });
 });
