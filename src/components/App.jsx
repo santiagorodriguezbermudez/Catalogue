@@ -4,7 +4,6 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
-import Search from './Search';
 import StockDetail from './StockDetail';
 import StockList from '../containers/StockList';
 import Nav from './Nav';
@@ -21,12 +20,8 @@ const App = () => (
           <Nav />
           <StockDetail />
         </Route>
-        <Route path="/search">
-          <Search />
-          <StockList />
-        </Route>
         <Route>
-          <span>User not found</span>
+          <span>Bad Route</span>
         </Route>
       </Switch>
     </div>

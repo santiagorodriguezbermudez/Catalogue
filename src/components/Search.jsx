@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { searchStocksAPI } from '../actions/api';
 import '../assets/styles/search.css';
 
-const Search = ({ stocks, searchStocks }) => {
+const Search = ({ stocks, searchStocks, toogleVisibility }) => {
   // Create a state for the user input
   const [suggestions, setSuggestions] = React.useState([]);
   const [value, setNewValue] = React.useState('');
@@ -46,9 +46,11 @@ const Search = ({ stocks, searchStocks }) => {
         if (value.length > 0) {
           searchStocks(value);
         }
+        toogleVisibility();
         setNewValue('');
         break;
       case 27:
+        toogleVisibility();
         setNewValue('');
         break;
       default:
@@ -78,6 +80,7 @@ const Search = ({ stocks, searchStocks }) => {
 Search.propTypes = {
   stocks: PropTypes.arrayOf(PropTypes.object).isRequired,
   searchStocks: PropTypes.func.isRequired,
+  toogleVisibility: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => (

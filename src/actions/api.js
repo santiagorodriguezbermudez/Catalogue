@@ -9,6 +9,7 @@ import {
   searchedStocks,
   addPriceStock,
   updateState,
+  filter,
 } from './index';
 
 const convertSymbolsArrayToString = symbolsArray => (
@@ -59,6 +60,7 @@ export const searchStocksAPI = (query, limit = 10) => dispatch => {
     },
   }).then(response => {
     const stockSymbolsArray = response.data.map(stock => stock.symbol);
+    dispatch(filter('ALL'));
     dispatch(fetchStockProfiles(convertSymbolsArrayToString(stockSymbolsArray)));
     dispatch(updateState('IDLE'));
   }).catch(error => {
