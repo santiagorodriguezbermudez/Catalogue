@@ -1,4 +1,4 @@
-import filterReducer from '../../reducers/application';
+import filterReducer from '../../reducers/filter';
 import { filter } from '../../actions/index';
 
 describe('Filter Reducer', () => {
