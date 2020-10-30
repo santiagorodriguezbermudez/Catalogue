@@ -1,6 +1,6 @@
 # Catalogue
 
-A webapp that consists of a catalogue, that is, a browsable list of items that you can filter and access to the details of one item. It uses a Public API to fetch the data that it renders. 
+A webapp that consists of a catalog, that is, a browsable list of items that you can filter and access to the details of one item. It uses a Public API to fetch the data that it renders. 
 
 ## About
 
