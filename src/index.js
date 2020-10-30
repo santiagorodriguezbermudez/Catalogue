@@ -13,10 +13,6 @@ const store = createStore(combinedReducers, {
   stocks: [],
 }, applyMiddleware(thunk));
 
-store.subscribe(() => {
-  console.log('state updated', store.getState());
-});
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
