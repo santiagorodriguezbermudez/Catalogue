@@ -20,6 +20,11 @@ This webapp pulls information from the [Financial Modeling Prop App](https://fin
 
 ![screenshot3](./src/assets/images/screenshot3.png)
   
+## Project walkthrough
+
+- [Project Demo]()
+- [React Concepts]()
+
 ## Getting Started
 
 - Fork the repository and create a local one on your computer;
