@@ -3,14 +3,7 @@ const stocks = (state = [], action) => {
     case 'FETCH_STOCKS':
       return [
         ...state,
-        ...action.stocks.map(stock => ({
-          symbol: stock.symbol,
-          price: stock.price,
-          companyName: stock.companyName,
-          exchange: stock.exchange,
-          website: stock.website,
-          image: stock.image,
-        })),
+        ...action.stocks,
       ];
     default:
       return state;

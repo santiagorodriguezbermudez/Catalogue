@@ -34,8 +34,11 @@ export const fetchStockProfiles = stockName => (dispatch => {
       dispatch(showStock(response.data[0]));
       dispatch(updateState('IDLE'));
     } else {
-      dispatch(fetchStocks(response.data));
-      dispatch(searchedStocks(response.data));
+      const filterValidStocks = response.data.filter(
+        stock => stock.address !== null && stock.zip !== null,
+      );
+      dispatch(fetchStocks(filterValidStocks));
+      dispatch(searchedStocks(filterValidStocks));
       dispatch(updateState('IDLE'));
     }
   }).catch(() => {

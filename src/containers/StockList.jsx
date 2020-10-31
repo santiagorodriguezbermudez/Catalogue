@@ -61,7 +61,7 @@ const mapStateToProps = state => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  getStocks: (query, limit = 1000) => {
+  getStocks: (query, limit = 200) => {
     dispatch(searchStocksAPI(query, limit));
   },
   setFilter: label => {
