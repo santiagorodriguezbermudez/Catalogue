@@ -19,11 +19,6 @@ This webapp pulls information from the [Financial Modeling Prop App](https://fin
 <br />
 
 ![screenshot3](./src/assets/images/screenshot3.png)
-  
-## Project walkthrough
-
-- [Project Demo](https://www.loom.com/share/cf99523fa44b4f6b9862cb1f7dcaf9f1)
-- [React Concepts](https://www.loom.com/share/60ee4097b8a34f8d8c73e5c9415e34da)
 
 ## Getting Started
 
